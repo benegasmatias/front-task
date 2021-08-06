@@ -9,7 +9,7 @@ const routes: Routes = [{
   component:LoginComponent,
   canActivate:[authlogin]},
   { path: 'panel', loadChildren: () => import('./panel-base/panel-base.module').then(m => m.PanelBaseModule), canActivate:[authGuard]},
-  { path: 'oficinas', loadChildren: () => import('./oficinas/oficinas.module').then(m => m.OficinasModule) }]
+  { path: 'oficinas', loadChildren: () => import('./tasks/tasks.module').then(m => m.OficinasModule) }]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

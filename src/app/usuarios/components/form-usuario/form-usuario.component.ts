@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { OficinaService } from 'src/app/services/oficina.service';
+import { OficinaService } from 'src/app/services/task.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({

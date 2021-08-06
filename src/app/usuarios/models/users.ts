@@ -1,4 +1,4 @@
-import {Office}  from 'src/app/oficinas/models/offices';
+import {Task}  from 'src/app/tasks/models/task';
 export interface User{
     id:number;
     activo:number;
@@ -6,5 +6,5 @@ export interface User{
     office_id:number;
     username: string;
     email:string;
-    office:Office;
+    office:Task;
 }
