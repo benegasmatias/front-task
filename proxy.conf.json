@@ -1,5 +1,5 @@
 {
-    "/expedientes/public/api/*": {
+    "/api-tasks/public/api/*": {
       "target": "http://localhost",
       "secure": false,
       "logLevel":"debug"

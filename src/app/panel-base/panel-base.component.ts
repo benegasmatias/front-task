@@ -46,21 +46,15 @@ export class PanelBaseComponent implements OnDestroy {
       route: 'inicio',
       icon: 'assignment',
       subMenu: [
+  
         {
-          name: 'Tareas',
-          route: 'inicio',
-          icon: 'assignment',
-          subMenu: [
-            {
               name: 'Generar Tarea',
               route: `tasks/addTask`,
             },
             {
               name: 'Listar Tareas',
               route: `tasks/listTasks`,
-            }
-          ]
-        }
+            }        
       ]
     })
 

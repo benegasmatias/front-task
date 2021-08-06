@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:"expedientes/public/api"
+  baseUrl:"api-tasks/public/api"
 };
 
 /*

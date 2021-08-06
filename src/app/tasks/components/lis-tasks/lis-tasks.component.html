@@ -31,24 +31,21 @@
 
     <!-- NOMBRE -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>NOMBRE DE OFICINA </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>NOMBRE DE LA TAREA</th>
       <td mat-cell *matCellDef="let row"> {{row.name}} <span *ngIf="row.new==1"  class="material-icons New">fiber_new</span> </td>
     </ng-container>
 
-    <!-- EMAIL -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> EMAIL </th>
-      <td mat-cell *matCellDef="let row">{{ row.email}} </td>
+    <!-- DESCRIPTIOn -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPTION </th>
+      <td mat-cell *matCellDef="let row">{{ row.description}} </td>
     </ng-container>
   <!-- ACCIONES -->
+  
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCIONES </th>
-    <td mat-cell *matCellDef="let row">
-       <button (click)="editar(row)" mat-mini-fab><span class="material-icons">edit</span></button> 
-       <button (click)="delete(row)" mat-mini-fab><span class="material-icons">deleted</span></button>
-    </td>
+    <td mat-cell *matCellDef="let row"> <button title="Eliminar tarea" (click)="delete(row.id)" class="btn btn-danger">x</button> </td>
   </ng-container>
-    
 
      
   
@@ -63,6 +60,17 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
 </div>
+<div class="row">
+  <div class="col-s-6 col  d-md-block d-xl-block">
+
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <button class="btn btn-info mr-2" title="Siguiente" (click)="getPaginate(pagePrev)" [disabled]="!pagePrev"> <mat-icon>arrow_back_ios_new</mat-icon> </button>
+    <button class="btn btn-success" title="previo" (click)="getPaginate(pageNext)" [disabled]="!pageNext"> <mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+ 
+</div>
+
 </div>

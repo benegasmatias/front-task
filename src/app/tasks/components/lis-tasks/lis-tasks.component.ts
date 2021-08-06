@@ -7,10 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { EdittaskComponent } from '../edit-tasks/edit-tasks.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
-export interface Office{
+export interface Task{
   id:string;
   name:string;
-  email:string
+  description:string
 }
 @Component({
   selector: 'app-lis-tasks',
@@ -25,10 +25,14 @@ export class LisTasksComponent implements OnInit {
   spinnertasks;
   notasks;
   user;
-  displayedColumns: string[] = ['index', 'name', 'email','acciones'];
-  dataSource: MatTableDataSource<Office>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  url = false;
+  cant=2;
+  pageNext = false;
+  pagePrev = false;
+  displayedColumns: string[] = ['index', 'name', 'description','acciones'];
+  dataSource: MatTableDataSource<Task>;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
   constructor(private serviceTask:TaskService,private dialog:MatDialog,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -38,12 +42,16 @@ export class LisTasksComponent implements OnInit {
   cargaList(){
     this.spinnertasks=false;
     this.notasks = false;
-    this.serviceTask.getOffice().subscribe(
+    this.dataSource=null
+    this.serviceTask.getTasksPaginate(this.cant,1).subscribe(
       data=>{
-        this.tasks = data['offices']
+        this.tasks = data['tasks'].data
         this.dataSource = new MatTableDataSource(this.tasks);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        
+        this.pageNext =  data['tasks'].next_page_url.substr(55,35)
+        this.pagePrev = data['tasks'].prev_page_url.substr(55,35)
         if(this.tasks){
          
           this.spinnertasks=false;
@@ -55,6 +63,7 @@ export class LisTasksComponent implements OnInit {
       }
     )
   }
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -64,34 +73,7 @@ export class LisTasksComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  editar(oficina){
-    if(this.user.office.name.toLowerCase()=='informatica'){
-      const dialogef = this.dialog.open(EdittaskComponent, {
-        data: {title: 'Editar Oficina',oficina}
-        });
-   
-        dialogef.afterClosed().subscribe(result => {
-          if(result){
-            if (result.confirm) {
-              console.log(result)
-              this.serviceTask.editOffice(result.form).subscribe(
-                data=>{
-                  if(data['status']==1){
-                   this.alert('Oficina actualizada!')
-                   this.cargaList();
-                  }else{
-                   this.alert('Error, no se actualizo!')
-                  }
-                }
-              )
-            }
-          }
-       
-          });
-    }else{
-      console.log('error')
-    }
-  }
+
 
   
   alert(msj) {
@@ -101,16 +83,49 @@ export class LisTasksComponent implements OnInit {
       verticalPosition: this.verticalPosition,
     });
   }
-  delete(office) {
-    if (confirm("Esta seguro que quiere eliminar esta oficina")){
-      this.serviceTask.deleteOffice(office).subscribe(
+  delete(task) {
+    if (confirm("Esta seguro que quiere eliminar esta Tarea")){
+      this.serviceTask.deleteTask(task).subscribe(
         data => {
           // console.log(data);
           if (data['status'] == 1) {
-            this.alert('Oficina eliminada!')
+            this.alert('Tarea eliminada!')
             this.cargaList();
           } else {
             this.alert('¡Error, no se pudo realizar la accion!')
+          }
+        }
+      )
+    }
+  }
+
+  getPaginate(pag){
+    console.log(pag)
+   if(pag){
+    this.dataSource=null
+      this.serviceTask.getTasksPaginate(this.cant,pag).subscribe(
+        data=>{
+          this.tasks = data['tasks'].data
+          this.dataSource = new MatTableDataSource(this.tasks);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          if( data['tasks'].next_page_url){
+            this.pageNext =  data['tasks'].next_page_url.substr(55,35)
+          }else{
+            this.pageNext = false
+          }
+          if( data['tasks'].prev_page_url){
+           this.pagePrev = data['tasks'].prev_page_url.substr(55,35)
+          }else{
+            this.pagePrev=false
+          }
+          if(this.tasks){
+          
+            this.spinnertasks=false;
+            this.notasks = false;
+          }else{
+            this.spinnertasks=false;
+            this.notasks = true;
           }
         }
       )

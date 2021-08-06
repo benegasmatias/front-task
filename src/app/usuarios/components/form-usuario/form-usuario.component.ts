@@ -32,9 +32,9 @@ export class FormUsuarioComponent implements OnInit {
     this.spinnerSave = false;
     this.alertErr= false;
     
-    this.serviceTask.getOffice().subscribe(
+    this.serviceTask.getTasks().subscribe(
       data=>{
-              this.oficinas = data['offices']
+              this.oficinas = data['tasks']
 
             },
       e=>console.log(e)

@@ -9,20 +9,29 @@ export class TaskService {
   API_URI = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
-  addOffice(oficina){
-    return this.http.post(`${this.API_URI}/offices`,oficina)
+  addTask(task){
+    return this.http.post(`${this.API_URI}/task`,task)
   }
 
-  getOffice(){
-    return this.http.get(`${this.API_URI}/offices`);
+  getTasks(){
+    return this.http.get(`${this.API_URI}/task`);
   }
-  editOffice(oficina){
-    return this.http.put(`${this.API_URI}/offices`,oficina)
+  editTask(task){
+    return this.http.put(`${this.API_URI}/task`,task)
   }
-  deleteOffice(oficina){
-    return this.http.delete(`${this.API_URI}/offices?id_office=${oficina.id}`)
+  deleteTask(id){
+    return this.http.delete(`${this.API_URI}/task/${id}`)
   }
 
+  getTasksPaginate(cant,pag){
+    return this.http.get(`${this.API_URI}/task/${cant}?page=${pag}`);
+  }
 
+  getTaskPaginateUrl(url){
+  
+    return this.http.get(`${this.API_URI}/${url}`);
+  }
+
+  
   
 }

@@ -17,6 +17,7 @@ import { EdittaskComponent } from './components/edit-tasks/edit-tasks.component'
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [TasksComponent, FormTaskComponent, LisTasksComponent, EdittaskComponent],
@@ -27,6 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatInputModule,CdkTableModule,
+    MatIconModule,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,

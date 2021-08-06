@@ -43,9 +43,9 @@ export class NavBarComponent implements OnInit {
 
   private cargarUser() {
     let user = JSON.parse(sessionStorage.getItem('currentUser'))
-    this.title= `Expedientes-${user.office.name}`
+    this.title= `${user.username}`
     this.datoUser = {
-      name: user.name,
+      name: user.username,
       imagen: "assets/img/logo.png"
     }
   }

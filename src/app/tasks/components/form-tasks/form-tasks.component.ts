@@ -15,20 +15,20 @@ export class FormTaskComponent implements OnInit {
   constructor(private serviceTask:TaskService,private _snackBar: MatSnackBar) { }
   form = new FormGroup({
     name: new FormControl('', Validators.required),
-    colour: new FormControl('', Validators.required),
-    email: new FormControl('',[Validators.required,Validators.email])
+    description: new FormControl('', Validators.required)
   });
   ngOnInit(): void {
   }
 
   enviar(){
-    this.serviceTask.addOffice(this.form.value).subscribe(  
+    this.spinnerSave = true
+    this.serviceTask.addTask(this.form.value).subscribe(  
       data=>{
         if(data['status']==1){
+          this.spinnerSave = false
           this.alert('Task creada!')
           this.form.get('name').setValue('')
-          this.form.get('colour').setValue('')
-          this.form.get('email').setValue('')
+          this.form.get('description').setValue('')
         }
       }
     )

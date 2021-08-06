@@ -4,11 +4,11 @@
     <form [formGroup]="form" >
 
          
-        <div  mat-dialog-title class="text-center"><h1>Nueva <strong>Oficina</strong></h1></div>
+        <div  mat-dialog-title class="text-center"><h1>Nueva <strong>Tarea</strong></h1></div>
         <hr>
         <br>
         <div class="col">
-            <p class="text-muted text-center font-weight-light" >Datos de la Oficina</p>
+            <p class="text-muted text-center font-weight-light" >Datos de la Tarea</p>
             <div class="row">
                 <div class="col-4">
                     <mat-form-field appearance="outline">
@@ -18,16 +18,11 @@
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline">
-                        <mat-label>COLOR</mat-label>
-                        <input matInput type="color"  formControlName="colour" placeholder="Descripcion">
+                        <mat-label>Description</mat-label>
+                        <input matInput  formControlName="description"   placeholder="ingrese la description">
                     </mat-form-field>
                 </div>
-                <div class="col-4">
-                    <mat-form-field appearance="outline">
-                        <mat-label>EMAIL</mat-label>
-                        <input matInput  formControlName="email"   placeholder="Email de la oficina">
-                    </mat-form-field>
-                </div>
+            
             
             </div>
    
