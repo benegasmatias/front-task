@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OficinasRoutingModule } from './tasks-routing.module';
-import { OficinasComponent } from './tasks.component';
-import { FormOficinaComponent } from './components/form-tasks/form-tasks.component';
+import { TasksRoutingModule } from './tasks-routing.module';
+import { TasksComponent } from './tasks.component';
+import { FormTaskComponent } from './components/form-tasks/form-tasks.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -12,17 +12,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { CdkTableModule } from '@angular/cdk/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { LisOficinasComponent } from './components/lis-tasks/lis-tasks.component';
-import { EditOficinasComponent } from './components/edit-tasks/edit-tasks.component';
+import { LisTasksComponent } from './components/lis-tasks/lis-tasks.component';
+import { EdittaskComponent } from './components/edit-tasks/edit-tasks.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
-  declarations: [OficinasComponent, FormOficinaComponent, LisOficinasComponent, EditOficinasComponent],
+  declarations: [TasksComponent, FormTaskComponent, LisTasksComponent, EdittaskComponent],
   imports: [
     CommonModule,
-    OficinasRoutingModule,
+    TasksRoutingModule,
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
@@ -35,4 +35,4 @@ import {MatDialogModule} from '@angular/material/dialog';
 
   ]
 })
-export class OficinasModule { }
+export class TasksModule { }

@@ -4,16 +4,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import {  MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
-import { OficinaService } from 'src/app/services/task.service';
+
 
 @Component({
-  selector: 'app-edit-oficinas',
-  templateUrl: './edit-oficinas.component.html',
-  styleUrls: ['./edit-oficinas.component.scss']
+  selector: 'app-edit-task',
+  templateUrl: './edit-task.component.html',
+  styleUrls: ['./edit-task.component.scss']
 })
-export class EditOficinasComponent implements OnInit {
+export class EdittaskComponent implements OnInit {
 
-  constructor(private serviceOffice:OficinaService,@Inject (MAT_DIALOG_DATA) public data : any,public dialogref: MatDialogRef<EditOficinasComponent>) { }
+  constructor(@Inject (MAT_DIALOG_DATA) public data : any,public dialogref: MatDialogRef<EdittaskComponent>) { }
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   form = new FormGroup({

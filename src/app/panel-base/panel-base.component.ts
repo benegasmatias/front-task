@@ -42,80 +42,29 @@ export class PanelBaseComponent implements OnDestroy {
 
     let user = JSON.parse(sessionStorage.getItem('currentUser'))
     this.fillerNav.push({
-      name: 'Expedientes',
+      name: 'Tareas',
       route: 'inicio',
       icon: 'assignment',
       subMenu: [
         {
-          name: 'Ver Expediente',
-          route: 'expedientes/recorridoExpedientes'
-        },
-        {
-          name: 'Expedientes a Revisar',
-          route: `expedientes/listExpedientes`,
-        },
-        {
-          name: 'Historial Expedientes',
-          route: `expedientes/historialExpedientes`,
-        }, {
-          name: 'Expediente externos',
-          route: 'expedientes/externalExpedientes'
-        }, {
-          name: 'Expedientes Archivados',
-          route: `expedientes/archivedExpedientes`
-        },
-        {
-          name: 'Expedientes Activos',
-          route: `expedientes/activeExpedientes`
-        }
-      ]
-    })
-
-    if (user.office.name.toLowerCase() == 'mesa de entrada') {
-      this.fillerNav[0].subMenu.unshift({
-        name: 'Generar Expediente',
-        route: `expedientes/addExpediente`
-      });
-    } else if (user.office.name.toLowerCase() == 'informatica') {
-      this.fillerNav.push({
-        name: 'Usuarios',
-        route: 'inicio',
-        icon: 'assignment',
-        subMenu: [
-          {
-            name: 'Generar Usuario',
-            route: `usuarios/addUsuario`,
-          },
-          {
-            name: 'Listar Usuario',
-            route: `usuarios/listUsuarios`,
-          }
-        ]
-      },
-        {
-          name: 'Oficinas',
+          name: 'Tareas',
           route: 'inicio',
           icon: 'assignment',
           subMenu: [
             {
-              name: 'Generar Oficina',
-              route: `oficinas/addOficina`,
+              name: 'Generar Tarea',
+              route: `tasks/addTask`,
             },
             {
-              name: 'Listar Oficinas',
-              route: `oficinas/listOficinas`,
+              name: 'Listar Tareas',
+              route: `tasks/listTasks`,
             }
           ]
         }
-      )
+      ]
+    })
 
-    }
-    else if (user.office.name.toLowerCase() == 'privada') {
-      this.fillerNav[0].subMenu.push({
-        name: 'Expedientes p/oficina',
-        route: 'expedientes/count-expedientes-activos'
-      });
-    }
+   
     this.datoUser = {
       name: user.name,
       imagen: "assets/img/logo.png"

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { OficinaService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: 'app-form-oficina',
-  templateUrl: './form-oficina.component.html',
-  styleUrls: ['./form-oficina.component.scss']
+  selector: 'app-form-Task',
+  templateUrl: './form-Task.component.html',
+  styleUrls: ['./form-Task.component.scss']
 })
-export class FormOficinaComponent implements OnInit {
+export class FormTaskComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   spinnerSave=false;
-  constructor(private serviceOffice:OficinaService,private _snackBar: MatSnackBar) { }
+  constructor(private serviceTask:TaskService,private _snackBar: MatSnackBar) { }
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     colour: new FormControl('', Validators.required),
@@ -22,10 +22,10 @@ export class FormOficinaComponent implements OnInit {
   }
 
   enviar(){
-    this.serviceOffice.addOffice(this.form.value).subscribe(  
+    this.serviceTask.addOffice(this.form.value).subscribe(  
       data=>{
         if(data['status']==1){
-          this.alert('Oficina creada!')
+          this.alert('Task creada!')
           this.form.get('name').setValue('')
           this.form.get('colour').setValue('')
           this.form.get('email').setValue('')

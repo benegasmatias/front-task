@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormOficinaComponent } from './components/form-tasks/form-tasks.component';
-import { LisOficinasComponent } from './components/lis-tasks/lis-tasks.component';
+import { FormTaskComponent } from './components/form-tasks/form-tasks.component';
+import { LisTasksComponent } from './components/lis-tasks/lis-tasks.component';
 
-import { OficinasComponent } from './tasks.component';
+import { TasksComponent } from './tasks.component';
 
-const routes: Routes = [{ path: '', component: OficinasComponent,children:[
-  {path:'addOficina',
-  component:FormOficinaComponent},
-  {path:'listOficinas',
-  component:LisOficinasComponent}
+const routes: Routes = [{ path: '', component: TasksComponent,children:[
+  {path:'addTask',
+  component:FormTaskComponent},
+  {path:'listTasks',
+  component:LisTasksComponent}
 ] }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OficinasRoutingModule { }
+export class TasksRoutingModule { }

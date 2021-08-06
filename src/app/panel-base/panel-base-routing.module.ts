@@ -6,7 +6,7 @@ import { PanelBaseComponent } from './panel-base.component';
 const routes: Routes = [{ path: '', component: PanelBaseComponent,children:[
   { path: 'login', loadChildren: () => import('../login/login.module').then(m => m.LoginModule) },
   {path:'usuarios',loadChildren:()=>import('../usuarios/usuarios.module').then(m=>m.UsuariosModule)},
-  {path:'oficinas',loadChildren:()=>import('../tasks/tasks.module').then(m=>m.OficinasModule)}
+  {path:'tasks',loadChildren:()=>import('../tasks/tasks.module').then(m=>m.TasksModule)}
 ] }];
 
 @NgModule({
