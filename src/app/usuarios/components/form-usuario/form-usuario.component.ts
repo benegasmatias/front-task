@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { OficinaService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/services/task.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -25,14 +25,14 @@ export class FormUsuarioComponent implements OnInit {
   spinnerSave: boolean;
   alertErr: boolean;
   
-  constructor(private serviceOficina:OficinaService,private serviceUsuarios:UsuarioService,private _snackBar: MatSnackBar) { }
+  constructor(private serviceTask:TaskService,private serviceUsuarios:UsuarioService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.alertSuccess = false;
     this.spinnerSave = false;
     this.alertErr= false;
     
-    this.serviceOficina.getOffice().subscribe(
+    this.serviceTask.getOffice().subscribe(
       data=>{
               this.oficinas = data['offices']
 

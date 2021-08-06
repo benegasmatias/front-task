@@ -8,8 +8,8 @@ import {  MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@an
 
 @Component({
   selector: 'app-edit-task',
-  templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.scss']
+  templateUrl: './edit-tasks.component.html',
+  styleUrls: ['./edit-tasks.component.scss']
 })
 export class EdittaskComponent implements OnInit {
 

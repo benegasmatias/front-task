@@ -4,9 +4,9 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: 'app-form-Task',
-  templateUrl: './form-Task.component.html',
-  styleUrls: ['./form-Task.component.scss']
+  selector: 'app-form-tasks',
+  templateUrl: './form-tasks.component.html',
+  styleUrls: ['./form-tasks.component.scss']
 })
 export class FormTaskComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';

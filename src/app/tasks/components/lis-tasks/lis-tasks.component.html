@@ -1,5 +1,5 @@
 
-   <h2  *ngIf="spinnerOficinas && !noOficinas" class="text-center m-4">
+   <h2  *ngIf="spinnertasks && !notasks" class="text-center m-4">
     <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
       <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
       <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
@@ -8,11 +8,11 @@
       <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
       </h2>
   
-      <h2 class="text-center " *ngIf="noOficinas">
-       No existen Oficinas a revisar!
+      <h2 class="text-center " *ngIf="notasks">
+       No existen tasks a revisar!
       </h2>
   
-<div *ngIf="!noOficinas && !spinnerOficinas">
+<div *ngIf="!notasks && !spinnertasks">
     
   <mat-form-field class="buscar" >
     <mat-label>Buscar</mat-label>
