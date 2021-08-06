@@ -1,0 +1,122 @@
+<div class="jumbotron jumbotron-fluid" style="margin-bottom:0;">
+    <div class="container text-center">
+      <h1 class="display-4">Generar un nuevo expediente</h1>
+      <div class="input-group" style="justify-content: center;">  
+      </div>
+    </div>
+  </div>
+<div class="container py-5">
+    <mat-card>
+        <form [formGroup]="form">
+            <div mat-dialog-title class="text-center">
+                <h1>Nuevo <strong>Expediente</strong></h1>
+            </div>
+            <hr>
+            <br>
+            <div class="col">
+                <p class="text-muted text-center font-weight-light">Datos del Expediente</p>
+                <div class="row">
+                    <div class="col-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>1500</mat-label>
+                            <input matInput placeholder="1500" value="1500" readonly>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Numero*</mat-label>
+                            <input matInput formControlName="number_record" placeholder="Numero">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>2021</mat-label>
+                            <input matInput placeholder="EXP" value="2021" readonly>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>EXP</mat-label>
+                            <input matInput placeholder="EXP" value="EXP" readonly>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Monto</mat-label>
+                            <input formControlName="amount" matInput type="number" value=""
+                                placeholder="Monto en pesos">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Motivo*</mat-label>
+                            <input matInput formControlName="motivo" placeholder="Descripcion">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Observacion</mat-label>
+                            <textarea formControlName="observation_record" matInput type="text" value=""
+                                placeholder="Haz aquí alguna aclaracion"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-muted text-center font-weight-light">Datos del Iniciador</p>
+                <div class="row">
+
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Iniciador*</mat-label>
+                            <input matInput formControlName="iniciador" placeholder="Nombre">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cuit</mat-label>
+                            <input matInput formControlName="cuit" placeholder="Numero de Cuit">
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <hr>
+                <p class="text-muted text-center font-weight-light">Oficina Destino</p>
+                <div class="row">
+
+                    <div class="col">
+                        <mat-form-field appearance="fill" style="display: inline-block;"
+                            class="mat-form-field-appearance-fill mat-form-field-flex">
+                            <mat-label>Seleccione una Oficina*</mat-label>
+                            <select matNativeControl formControlName="destination_office_id" id="selecDestino">
+                                <option *ngFor="let oficina of oficinas" [value]='oficina.id'> {{ oficina.name}}
+                                </option>
+                            </select>
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+                <hr>
+                <br>
+
+                <mat-card-actions style="display: inline-block; margin-left: 80%; width:100px !important;">
+                    <!-- <button type="submit"  id="register" class="button "(click)="enviar()" class="btn btn-success" value="Guardar">
+                                    Guardar
+                            </button> -->
+                    <!-- <button mat-fab><mat-icon>icon_name</mat-icon></button> -->
+
+
+
+
+                    <button mat-button [disabled]="!form.valid" (click)="enviar()" color="primary">
+                        <mat-spinner diameter="20" *ngIf="spinnerSave">
+                        </mat-spinner>Guardar
+                    </button>
+                </mat-card-actions>
+
+            </div>
+        </form>
+    </mat-card>
+</div>

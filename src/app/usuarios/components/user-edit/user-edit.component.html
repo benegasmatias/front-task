@@ -1,0 +1,50 @@
+<mat-card style="width: 50em;">
+    <form [formGroup]="form">
+
+
+       <div mat-dialog-title class="text-center">
+            <!-- <h1>Editar <strong>Oficina</strong></h1> -->
+       </div> 
+        <div class="col">
+            <!-- <p class="text-muted text-center font-weight-light">Datos de la Oficina</p> -->
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre de usuario</mat-label>
+                        <input matInput formControlName="username" placeholder="Usuario con el logueará">
+                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" placeholder="Email actual" readonly>
+                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nueva contraseña</mat-label>
+                        <input matInput formControlName="password" placeholder="Cambiar contraseña">
+                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nuevo email</mat-label>
+                        <input matInput formControlName="newemail" placeholder="Cambiar email" >
+                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <button mat-raised-button [disabled]="!form.valid" (click)="onSubmit()" color="primary">Guardar</button>
+                <button mat-raised-button color="secondary" (click)="close()">Cerrar</button>
+            </div>
+        </div>
+
+    </form>
+
+</mat-card>

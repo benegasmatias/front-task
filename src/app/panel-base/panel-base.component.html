@@ -1,0 +1,60 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <!--navBar -->
+    <app-nav-bar [barraBusqueda]="true" [sideNav]='true' (sideNavOpen)="snav.toggle()" [menuUser]="true"></app-nav-bar>
+  
+    <!-- sideNav -->
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="50" [opened]="!mobileQuery.matches" >
+  
+        <!-- items sideNav-->
+        <mat-selection-list #shoes [multiple]="false" class="m-0 p-0">
+          <mat-accordion class="p-0 m-0">
+          <p [hidden]="!mobileQuery.matches" class="text-center font-weight-bold h5 mt-2">Expedientes</p>
+         
+          <p *ngFor="let nav of fillerNav" class="m-0">
+  
+          <mat-list-option *ngIf="!nav.subMenu; else elseBlock" class="btnSideNav m-0"  routerLink="{{nav.route}}"  (click)="mobileQuery.matches ? snav.toggle() : ''">
+            <div class="row">
+              <mat-icon [inline]="true" class="my-auto">{{nav.icon}}</mat-icon>
+              <p class="my-auto ml-2">{{nav.name}}</p>
+            </div>
+          </mat-list-option>
+  
+          <ng-template #elseBlock>
+            
+          <mat-expansion-panel  class="mat-elevation-z0 btnSideNav m-0">
+  
+            <mat-expansion-panel-header  [collapsedHeight]="'48px'" [expandedHeight]="'48px'" class="m-0 btnSideNav">
+              <div class="row">
+                <mat-icon [inline]="true" class="my-auto" style="margin-left: 15px;">{{nav.icon}}</mat-icon>
+                <p class="my-auto ml-2">{{nav.name}}</p>
+              </div>
+            </mat-expansion-panel-header>
+  
+            <mat-list-option  *ngFor="let sub of nav.subMenu" class="m-0 content"  routerLink="{{sub.route}}"  (click)="mobileQuery.matches ? snav.toggle() : ''">
+              <span style="padding-left: 3rem;"> {{sub.name}}</span>
+            </mat-list-option>
+  
+          </mat-expansion-panel>
+        </ng-template>
+          </p>
+  
+            
+  
+          </mat-accordion>
+        </mat-selection-list>
+      </mat-sidenav>
+  
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>  
+      </mat-sidenav-content>
+  
+      <div class="botton">
+        <p class="text-white">Tu periodo de prueba esta vigente por (tiempo)</p>
+        <button mat-button class="btn btn-naraja"  routerLink="/suscripciones">Seleccionar Plan</button>
+      </div>
+      
+    </mat-sidenav-container>
+  </div>

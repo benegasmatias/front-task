@@ -1,0 +1,35 @@
+
+<div class="jumbotron jumbotron-fluid" style="margin-bottom:0;">
+    <div class="container text-center">
+      <h1 class="display-4">Cantidad de expedientes en oficinas</h1>
+      <div class="input-group" style="justify-content: center;">  
+      </div>
+    </div>
+</div>
+<h2 class="text-start" *ngIf="isLoadingResults" style="text-align: center;">
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+  <div style="width: 1.5rem; height: 1.5rem;" class="spinner-grow text-secondary" role="status"></div>
+</h2>
+  <div class="container py-5">
+    <table mat-table [dataSource]="data"  class="mat-elevation-z8">
+      <ng-container matColumnDef="index"   >
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td style="text-align: left;padding-right:15px ;" mat-cell *matCellDef="let row;let i = index;"> {{i+1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Oficina</th>
+          <td mat-cell *matCellDef="let item">{{item.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="total_exp">
+          <th mat-header-cell *matHeaderCellDef>Total de expedientes</th>
+          <td style="text-align: center;" mat-cell *matCellDef="let item">{{item.total_exp}}</td>
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+  </div>

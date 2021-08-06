@@ -1,0 +1,12 @@
+.mat-table{
+    margin: 0 auto;
+}
+.mat-row{
+    margin-left: 15px;
+}
+.mat-header-cell{
+    font-size: 20px;
+}
+.mat-row:nth-child(even){
+    background-color: rgba(0,0,0,.05)
+}

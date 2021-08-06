@@ -1,0 +1,75 @@
+
+<mat-card class=" mat-elevation-z8" style="position: relative; width: 36em; margin-left: 22%; top: 10px; " >
+    <form [formGroup]="form" >
+
+         
+        <div  mat-dialog-title class="text-center"><h1>Nuevo <strong>Usuario</strong></h1></div>
+        <hr>
+        <br>
+        <div class="col">
+       
+            <p class="text-muted text-center font-weight-light" >Usuario</p>
+            <div class="row">
+                    <mat-form-field  style="width: 500px;"  appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput  formControlName="username"   placeholder="Nombre de usuario">
+                    </mat-form-field>
+  
+            </div>
+            <hr>
+            <p class="text-muted text-center font-weight-light" >Contraseña</p>
+            <div class="row">
+                <mat-form-field style="width: 500px;"  appearance="outline">
+                    <mat-label>Ingrese contraseña</mat-label>
+                    <input  formControlName="password"  matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+ 
+            </div>
+            <hr>
+            <p class="text-muted text-center font-weight-light" >Email</p>
+            <div class="row">
+                    <mat-form-field  style="width: 500px;"  appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput  formControlName="email"   placeholder="Ingrese email">
+                    </mat-form-field>
+  
+            </div>
+            <hr>
+            <p class="text-muted text-center font-weight-light" >Oficina Destino</p>
+            <div class="row">
+                    <mat-form-field appearance="outline"  style="width: 500px;" >
+                        <mat-label>Seleccione una Oficina</mat-label>
+                        <select matNativeControl  formControlName="office_id"  id="selecDestino">
+                            <option *ngFor="let oficina of oficinas"  [value]='oficina.id'> {{ oficina.name}} </option> 
+                        </select>
+                      </mat-form-field>
+
+            </div>
+            <hr>
+            <br>
+  
+                    <mat-card-actions style="display: inline-block; margin-left: 80%; width:100px !important;">
+                        <!-- <button type="submit"  id="register" class="button "(click)="enviar()" class="btn btn-success" value="Guardar">
+                                Guardar
+                        </button> -->
+                        <!-- <button mat-fab><mat-icon>icon_name</mat-icon></button> -->
+                        
+                   
+                        
+                   
+                        <button mat-button [disabled]="!form.valid" (click)="enviar()"  color="primary"> <strong *ngIf="!spinnerSave">Guardar</strong> <strong  *ngIf="spinnerSave"><mat-spinner diameter="20">
+                        </mat-spinner>Cargando..</strong> </button>
+                    </mat-card-actions>
+            
+        </div>
+
+
+   
+     
+
+    </form>
+
+</mat-card>

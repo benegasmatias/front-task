@@ -1,0 +1,57 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="row">
+
+<!--   <div class="col-md-6   d-md-block-none d-sm-block-none d-none d-xl-block   ">
+
+   
+  </div> -->
+
+  <div class="col-md-6">
+
+    <div   style="display: inline-block; position: relative; top: 250px; margin-left: 30%; align-content: center;" >
+      <div  id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="pl-4" >
+          <h1 class="ml-5">Task login</h1>
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="form" class="p-2" ng-submit="login()" >
+          <div class="form-group container-fluid">
+            <div class="alert alert-danger text-center" *ngIf="isloged">Usuario o contraseña Erronea</div>
+            <div class="col">
+              <input autocomplete="username" class="form-control text-center mb-2" id="username" minlength="4"
+                formControlName="username" placeholder="Username" required>
+              <input autocomplete="current-password" type="password" class="form-control text-center mb-2" minlength="4"
+                style="width:100%" id="password" formControlName="password" required placeholder="Password">
+              <button mat-button type="submit" [disabled]="!form.valid" style="width: 100%;" id="login"
+                (click)="login()" class="btn btn-primary form-control mt-2" value="LogIn">
+                <div *ngIf="!spinner">
+                  Iniciar Sesion
+                </div>
+                <div *ngIf="spinner">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span> Iniciando...</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="row mt-1" id="formFooter">
+          <!-- <a class="text-muted text-right" routerLink="recuperarContrasena">Olvidaste tu contraseña?</a> -->
+        </div>
+
+        <div class="row" id="formFooter">
+          <!-- <a class="text-muted text-right" routerLink="newClient">No tienes una cuenta? crear academia</a> -->
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

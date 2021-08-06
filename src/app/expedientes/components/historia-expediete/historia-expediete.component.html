@@ -1,0 +1,84 @@
+
+   <h2  *ngIf="spinnerExpediente && !noExpedientes" class="text-center m-4">
+    <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      <div  style="width: 1.5rem; height: 1.5rem;"class="spinner-grow text-secondary" role="status"></div>
+      </h2>
+  
+      <h2 class="text-center " *ngIf="noExpedientes">
+        Aun no pasaron expedientes por esta oficina!
+      </h2>
+  
+<div *ngIf="!spinnerExpediente && !noExpedientes">
+    
+  <mat-form-field class="buscar" >
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Elemento" #input>
+  </mat-form-field>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="index"   >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row;let i = index;"> {{i+1}} <mat-icon *ngIf="row.inicio">starts</mat-icon></td>
+    </ng-container>
+
+    <!-- EXPEDIENTE Column -->
+    <ng-container matColumnDef="record">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>NUMERO EXPEDIENTE </th>
+      <td mat-cell *matCellDef="let row"> {{row.record.number}}</td>
+    </ng-container>
+    <!-- ORIGEN creacion Column -->
+    <ng-container matColumnDef="office_origen">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> OFICINA ORIGEN </th>
+      <td mat-cell *matCellDef="let row" > {{row.office.name}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="observacion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Observacion del movimiento</th>
+      <td mat-cell *matCellDef="let row" >
+        
+      <ng-container *ngIf="row.observation; else elseTemplate">
+        {{row.observation}}
+      </ng-container>
+      <ng-template #elseTemplate>
+        Sin observacion
+      </ng-template>
+     </td>
+    </ng-container>
+    <!-- ENTRADA de creacion Column -->
+    <ng-container matColumnDef="input">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA DE ENTRADA </th>
+      <td mat-cell *matCellDef="let row">{{ row.input | date:'dd-MM-y H:mm':'-03:00' }} </td>
+    </ng-container>
+   <!-- SALIDA de creacion Column -->
+    <ng-container matColumnDef="output">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA DE SALIDA </th>
+      <td mat-cell *matCellDef="let row">{{ row.output | date:'dd-MM-y H:mm':'-03:00' }} </td>
+    </ng-container>
+
+
+      
+    <ng-container matColumnDef="office_destino">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> OFICINA DESTINO </th>
+      <td mat-cell *matCellDef="let row" >  {{row.office_destination?row.office_destination.name:''}} </td>
+    </ng-container>
+     
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No se encontro un dato con el valor ingresado. "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+</div>

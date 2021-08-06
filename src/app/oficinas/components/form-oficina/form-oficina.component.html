@@ -1,0 +1,58 @@
+
+
+<mat-card style="position: relative; width: 50em; margin-left: 22%; top: 10px;" >
+    <form [formGroup]="form" >
+
+         
+        <div  mat-dialog-title class="text-center"><h1>Nueva <strong>Oficina</strong></h1></div>
+        <hr>
+        <br>
+        <div class="col">
+            <p class="text-muted text-center font-weight-light" >Datos de la Oficina</p>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>NOMBRE</mat-label>
+                        <input matInput  formControlName="name"   placeholder="Nombre de la oficina">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>COLOR</mat-label>
+                        <input matInput type="color"  formControlName="colour" placeholder="Descripcion">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>EMAIL</mat-label>
+                        <input matInput  formControlName="email"   placeholder="Email de la oficina">
+                    </mat-form-field>
+                </div>
+            
+            </div>
+   
+            <hr>
+           
+  
+                    <mat-card-actions style="display: inline-block; margin-left: 80%; width:100px !important;">
+                        <!-- <button type="submit"  id="register" class="button "(click)="enviar()" class="btn btn-success" value="Guardar">
+                                Guardar
+                        </button> -->
+                        <!-- <button mat-fab><mat-icon>icon_name</mat-icon></button> -->
+                        
+                   
+                        
+                   
+                        <button mat-raised-button [disabled]="!form.valid" (click)="enviar()"  color="primary"><mat-spinner diameter="20" *ngIf="spinnerSave">
+                        </mat-spinner>Guardar</button>
+                    </mat-card-actions>
+            
+        </div>
+
+
+   
+     
+
+    </form>
+
+</mat-card>
